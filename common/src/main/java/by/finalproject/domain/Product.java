@@ -31,12 +31,12 @@ public class Product {
 
   @Column private Double price;
 
-  @Column private Timestamp created;
+  @Column private Timestamp created = new Timestamp(System.currentTimeMillis());
 
-  @Column private Timestamp changed;
+  @Column private Timestamp changed = new Timestamp(System.currentTimeMillis());
 
   @Column(name = "is_deleted")
-  private boolean is_Deleted;
+  private boolean isDeleted;
 
   @ManyToOne
   @JoinColumn(name = "manufacturer_id")
@@ -45,8 +45,4 @@ public class Product {
   @ManyToOne
   @JoinColumn(name = "category_id")
   private Category category;
-
-  @ManyToOne
-  @JoinColumn(name = "subcategory_id")
-  private SubCategory subCategory;
 }

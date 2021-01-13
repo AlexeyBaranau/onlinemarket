@@ -10,16 +10,16 @@ spring:
     password: ${spring.datasource.password}
   datasource:
     hikari:
-      jdbc-url: "jdbc:postgresql://localhost:5432/webinar_database?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+      jdbc-url: "jdbc:postgresql://localhost:5432/OnlineMarketDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
       maximum-pool-size: 10
       driver-class-name: org.postgresql.Driver
     username: postgres
     password: root
-    url: "jdbc:postgresql://localhost:5432/webinar_database?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+    url: "jdbc:postgresql://localhost:5432/OnlineMarketDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
     driver-class-name: org.postgresql.Driver
 
 ---
 
 jwtconfig:
   secret: secret
-  expiration: 60000
+  expiration: 6000000

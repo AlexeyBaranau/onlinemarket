@@ -41,16 +41,20 @@ public class Customer {
   @Enumerated(EnumType.STRING)
   private Gender gender = Gender.NOT_SELECTED;
 
-  @Column private Timestamp created;
+  @Column private Timestamp created = new Timestamp(System.currentTimeMillis());
 
-  @Column private Timestamp changed;
+  @Column private Timestamp changed = new Timestamp(System.currentTimeMillis());
 
   @Column private String phone;
 
-  @Column private String adress;
+  @Column private String address;
+
+  @Column private String login;
+
+  @Column private String password;
 
   @Column(name = "is_deleted")
-  private boolean is_Deleted;
+  private Boolean isDeleted = false;
 
   @OneToMany(
       mappedBy = "customer",
