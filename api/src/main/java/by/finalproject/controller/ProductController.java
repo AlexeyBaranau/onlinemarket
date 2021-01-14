@@ -33,7 +33,7 @@ public class ProductController {
   @GetMapping
   public ResponseEntity<Page<Product>> findAll(
       @RequestParam(value = "page", defaultValue = "0") Integer page,
-      @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
+      @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize) {
     return new ResponseEntity<>(productService.findAll(page, pageSize), HttpStatus.OK);
   }
 
@@ -42,7 +42,7 @@ public class ProductController {
   public ResponseEntity<Page<Product>> findAllManufacturersProducts(
       @RequestParam(value = "id", required = false) Long manufacturerId,
       @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
-      @RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize) {
+      @RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize) {
     return new ResponseEntity<>(
         productService.findAllManufacturersProducts(manufacturerId, page, pageSize), HttpStatus.OK);
   }
@@ -52,7 +52,7 @@ public class ProductController {
   public ResponseEntity<Page<Product>> findAllCategoryProducts(
       @RequestParam(value = "id", required = false) Long categoryId,
       @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
-      @RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize) {
+      @RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize) {
     return new ResponseEntity<>(
         productService.findAllCategoryProducts(categoryId, page, pageSize), HttpStatus.OK);
   }

@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
   public Customer getCustomer() {
     String login = SecurityContextHolder.getContext().getAuthentication().getName();
     log.info(login);
-    if (login.isEmpty() | login.equals("annonymus")) {
+    if (login.isEmpty() | login.equals("anonymous")) {
       throw new AccessDeniedException("Access Denied");
     }
     return customerRepository
