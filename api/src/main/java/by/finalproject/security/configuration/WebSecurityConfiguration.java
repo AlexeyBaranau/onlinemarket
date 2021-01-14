@@ -28,15 +28,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   private final PasswordEncoder passwordEncoder;
   private final JwtRequestFilter jwtRequestFilter;
 
-  private static final String[] WHITE = {
-    "/v3/api-docs",
-    "/swagger-ui.html",
-    "/swagger-ui/**",
-    "/swagger-resources/**",
-    "/static/**",
-    "/templates/**"
-  };
-
   @Autowired
   public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder)
       throws Exception {
@@ -79,6 +70,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   // For swagger access only
   @Override
   public void configure(WebSecurity web) throws Exception {
-    web.ignoring().antMatchers(WHITE);
+    web.ignoring()
+        .antMatchers(
+            "/v3/api-docs",
+            "/swagger-ui.html",
+            "/swagger-ui/**",
+            "/swagger-resources/**",
+            "/static/**",
+            "/templates/**");
   }
 }
