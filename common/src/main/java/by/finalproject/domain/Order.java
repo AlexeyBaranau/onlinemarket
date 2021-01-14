@@ -35,7 +35,7 @@ public class Order {
   private Integer amount;
 
   @Column(name = "customer_id")
-  private Long customerId;
+  private Long customer;
 
-  @Column private Timestamp created = new Timestamp(System.currentTimeMillis());
+  @Column private Timestamp created;
 }

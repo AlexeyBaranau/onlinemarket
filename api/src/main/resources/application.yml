@@ -1,13 +1,4 @@
 spring:
-  flyway:
-    enabled: true
-    ignore-missing-migrations: true
-    locations: classpath:/migration
-    baseline-on-migrate: true
-    baseline-description: Flyway Scripts
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
   datasource:
     hikari:
       jdbc-url: "jdbc:postgresql://localhost:5432/OnlineMarketDB?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
@@ -22,4 +13,4 @@ spring:
 
 jwtconfig:
   secret: secret
-  expiration: 6000000
+  expiration: 600_000_000
