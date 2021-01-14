@@ -27,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
   public Product findById(Long productId) {
     return productRepository
         .findById(productId)
-        .orElseThrow(() -> new EntityNotFoundException("No found product by id " + productId));
+        .orElseThrow(() -> new EntityNotFoundException("Not found product with id " + productId));
   }
 
   @Override
@@ -35,10 +35,6 @@ public class ProductServiceImpl implements ProductService {
     return productRepository.findAll(PageRequest.of(page, pageSize));
   }
 
-  @Override
-  public Page<Product> search(String query, Integer page, Integer pageSize) {
-    return productRepository.findAllByNameContains(query, PageRequest.of(page, pageSize));
-  }
 
   @Override
   public Page<Product> findAllManufacturersProducts(

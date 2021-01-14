@@ -1,32 +1,26 @@
 package by.finalproject.service.impl;
 
 import by.finalproject.domain.Order;
+import by.finalproject.domain.Product;
 import by.finalproject.service.OrderService;
-import org.springframework.data.domain.Page;
+import by.finalproject.service.ProductService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+
+@Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
-    @Override
-    public Integer getAllOrdersCount() {
-        return null;
-    }
+
+    private final ProductService productService;
 
     @Override
-    public Page<Order> findAllCustomerOrders(Integer page, Integer pageSize) {
-        return null;
-    }
+    public Order addToOrder(Long productId, Integer amount) {
+        Product product = productService.findById(productId);
+        Double price = product.getPrice();
 
-    @Override
-    public Page<Order> findAllOrders(String number, Integer page, Integer pageSize) {
-        return null;
-    }
-
-    @Override
-    public Order saveOrder() {
-        return null;
-    }
-
-    @Override
-    public void changeOrderStatus(String code, Integer status) {
-
+        Order order = Order.builder().created(new Timestamp(System.currentTimeMillis())).totalPrice(price*amount).build();
+        return order;
     }
 }

@@ -24,7 +24,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
   public Manufacturer findById(Long id) {
     return manufacturerRepository
         .findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("No found manufacturer by id " + id));
+        .orElseThrow(() -> new EntityNotFoundException("Not found manufacturer with id " + id));
   }
 
   @Override

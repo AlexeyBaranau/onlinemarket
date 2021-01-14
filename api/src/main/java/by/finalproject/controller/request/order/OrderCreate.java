@@ -4,11 +4,12 @@ import lombok.Data;
 
 @Data
 public class OrderCreate {
-  private Long productId;
-
-  private Long customerId;
 
   private Double totalPrice;
 
-  private int amount;
+  private Long productId;
+
+  private Integer amount;
+
+  private Long customerId;
 }

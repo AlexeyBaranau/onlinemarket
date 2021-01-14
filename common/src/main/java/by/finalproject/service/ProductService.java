@@ -9,8 +9,6 @@ public interface ProductService {
 
   Page<Product> findAll(Integer page, Integer pageSize);
 
-  Page<Product> search(String query, Integer page, Integer pageSize);
-
   Page<Product> findAllManufacturersProducts(Long manufacturerId, Integer page, Integer pageSize);
 
   Page<Product> findAllCategoryProducts(Long categoryId, Integer page, Integer pageSize);

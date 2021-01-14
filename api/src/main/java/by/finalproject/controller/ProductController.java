@@ -37,15 +37,7 @@ public class ProductController {
     return new ResponseEntity<>(productService.findAll(page, pageSize), HttpStatus.OK);
   }
 
-  @ApiOperation(value = "Get all products")
-  @GetMapping("/search")
-  public ResponseEntity<Page<Product>> search(
-      @RequestParam(value = "name", required = false) String name,
-      @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
-      @RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize) {
-    return new ResponseEntity<>(productService.search(name, page, pageSize), HttpStatus.OK);
-  }
-
+  @ApiOperation(value = "Get all product by manufacturer id")
   @GetMapping("/manufacturer")
   public ResponseEntity<Page<Product>> findAllManufacturersProducts(
       @RequestParam(value = "id", required = false) Long manufacturerId,
@@ -55,6 +47,7 @@ public class ProductController {
         productService.findAllManufacturersProducts(manufacturerId, page, pageSize), HttpStatus.OK);
   }
 
+  @ApiOperation(value = "Get all product by category id")
   @GetMapping("/category")
   public ResponseEntity<Page<Product>> findAllCategoryProducts(
       @RequestParam(value = "id", required = false) Long categoryId,
@@ -89,6 +82,7 @@ public class ProductController {
   }
 
   @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @ApiOperation(value = "Delete product by id")
   @DeleteMapping("/{id}")
   public ResponseEntity<Product> createProduct(@PathVariable Long id) {
     productService.delete(id);
