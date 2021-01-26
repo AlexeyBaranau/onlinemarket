@@ -37,6 +37,11 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
+  public Customer findById(Long id) {
+    return customerRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not found product with id " + id));
+  }
+
+  @Override
   public Customer create(Customer customer) {
     customer.setPassword(passwordEncoder.encode(customer.getPassword()));
     Role role = new Role();
@@ -56,5 +61,14 @@ public class CustomerServiceImpl implements CustomerService {
   @Override
   public void delete(Long id) {
     customerRepository.deleteById(id);
+  }
+
+  @Override
+  public Customer deleteBySettingIsDeletedTrue(Long customerId) {
+    Customer customer = findById(customerId);
+    customer.setIsDeleted(true);
+    customer.setPassword("password_nonactive");
+    customer.setLogin(customer.getLogin() + "_nonactive");
+    return customerRepository.save(customer);
   }
 }
