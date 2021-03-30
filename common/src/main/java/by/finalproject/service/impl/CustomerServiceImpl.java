@@ -10,11 +10,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.Collections;
+import java.util.Optional;
 
 @Log4j2
 @Service
@@ -38,17 +40,30 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public Customer findById(Long id) {
-    return customerRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not found product with id " + id));
+    return customerRepository
+        .findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Not found customer with id " + id));
   }
 
   @Override
-  public Customer create(Customer customer) {
-    customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-    Role role = new Role();
-    role.setRoleName(SystemRoles.ROLE_USER);
-    role.setCustomer(customer);
-    customer.setRoles(Collections.singleton(role));
-    return customerRepository.save(customer);
+  public Customer create(Customer customer) throws UsernameNotFoundException {
+    try {
+      Optional<Customer> searchResult =
+          customerRepository.findByLoginIgnoreCase(customer.getLogin());
+      if (!searchResult.isPresent()) {
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        Role role = new Role();
+        role.setRoleName(SystemRoles.ROLE_USER);
+        role.setCustomer(customer);
+        customer.setRoles(Collections.singleton(role));
+        return customerRepository.save(customer);
+      } else {
+        throw new UsernameNotFoundException(
+            String.format("User with this login '%s' exist.", customer.getLogin()));
+      }
+    } catch (Exception e) {
+      throw new UsernameNotFoundException("User with this login not found");
+    }
   }
 
   @Override
@@ -67,8 +82,6 @@ public class CustomerServiceImpl implements CustomerService {
   public Customer deleteBySettingIsDeletedTrue(Long customerId) {
     Customer customer = findById(customerId);
     customer.setIsDeleted(true);
-    customer.setPassword("password_nonactive");
-    customer.setLogin(customer.getLogin() + "_nonactive");
     return customerRepository.save(customer);
   }
 }
