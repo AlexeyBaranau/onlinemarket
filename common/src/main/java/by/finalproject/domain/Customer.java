@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.Set;
@@ -27,7 +28,9 @@ import java.util.Set;
 @Entity
 @EqualsAndHashCode(exclude = "roles")
 @Table(name = "m_customers")
-public class Customer {
+public class Customer implements Serializable {
+
+  private static final long serialVersionUID = 723779660656994741L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,13 +15,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Data
 @Entity
 @EqualsAndHashCode(exclude = "customer")
 @Table(name = "m_roles")
-public class Role {
+public class Role implements Serializable {
 
+  private static final long serialVersionUID = 54164069324968991L;
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

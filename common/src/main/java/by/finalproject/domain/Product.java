@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
@@ -19,7 +20,9 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Entity
 @Table(name = "m_products")
-public class Product {
+public class Product implements Serializable {
+
+  private static final long serialVersionUID = 1663418810113781426L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
