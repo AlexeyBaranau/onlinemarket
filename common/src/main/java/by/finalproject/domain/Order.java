@@ -40,4 +40,6 @@ public class Order implements Serializable {
   private Long customer;
 
   @Column private Timestamp created;
+
+  //////
 }

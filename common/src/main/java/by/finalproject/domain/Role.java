@@ -24,7 +24,7 @@ import java.io.Serializable;
 public class Role implements Serializable {
 
   private static final long serialVersionUID = 54164069324968991L;
-  
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
