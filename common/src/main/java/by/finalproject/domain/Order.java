@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,6 +25,7 @@ import java.sql.Timestamp;
 public class Order implements Serializable {
 
   private static final long serialVersionUID = 1001588221863510188L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -30,16 +33,12 @@ public class Order implements Serializable {
   @Column(name = "total_price")
   private Double totalPrice;
 
-  @Column (name = "product_id")
-  private Long productId;
-
-  @Column (name = "amount")
-  private Integer amount;
-
   @Column(name = "customer_id")
   private Long customer;
 
   @Column private Timestamp created;
 
-  //////
+  @Column(name = "status")
+  @Enumerated(EnumType.STRING)
+  private OrderStatus status;
 }
