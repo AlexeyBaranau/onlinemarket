@@ -1,14 +1,17 @@
 package by.finalproject.service;
 
 import by.finalproject.domain.Order;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface OrderService {
 
-    Order addToOrder(Long productId, Integer amount);
+    Integer getAllOrdersCount();
 
-    List<Order> getOrders();
+    Page<Order> findAllCustomerOrders(Integer page, Integer pageSize);
 
-    List<Order> getAllOrders();
+    Page<Order> findAllOrders(String number, Integer page, Integer pageSize);
+
+    Order saveOrder();
+
+    void changeOrderStatus(String code, Integer status);
 }
