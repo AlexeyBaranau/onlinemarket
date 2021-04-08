@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static java.lang.String.format;
+
 @Service
 @RequiredArgsConstructor
 public class ManufacturerServiceImpl implements ManufacturerService {
@@ -24,7 +26,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
   public Manufacturer findById(Long id) {
     return manufacturerRepository
         .findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("Not found manufacturer with id " + id));
+        .orElseThrow(() -> new EntityNotFoundException(format("Not found manufacturer with id %d", id)));
   }
 
   @Override

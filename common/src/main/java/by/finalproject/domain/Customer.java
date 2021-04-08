@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -66,4 +67,12 @@ public class Customer implements Serializable {
       orphanRemoval = true)
   @JsonManagedReference
   private Set<Role> roles = Collections.emptySet();
+
+  @OneToOne(
+      mappedBy = "customer",
+      cascade = CascadeType.ALL,
+      fetch = FetchType.LAZY,
+      orphanRemoval = true)
+  @JsonManagedReference
+  private Basket basket;
 }

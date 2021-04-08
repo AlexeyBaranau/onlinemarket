@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Data
@@ -32,7 +33,7 @@ public class Product implements Serializable {
 
   @Column private String description;
 
-  @Column private Double price;
+  @Column private BigDecimal price;
 
   @Column private Timestamp created = new Timestamp(System.currentTimeMillis());
 
