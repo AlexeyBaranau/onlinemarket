@@ -9,8 +9,6 @@ public interface OrderService {
 
     Page<Order> findAllCustomerOrders(Integer page, Integer pageSize);
 
-    Page<Order> findAllOrders(String number, Integer page, Integer pageSize);
-
     Order saveOrder();
 
     void changeOrderStatus(String code, Integer status);

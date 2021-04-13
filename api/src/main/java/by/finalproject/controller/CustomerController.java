@@ -52,7 +52,7 @@ public class CustomerController {
   @DeleteMapping
   public ResponseEntity<Customer> deleteBySettingIsDeletedTrue (@RequestParam Long id){
     customerService.deleteBySettingIsDeletedTrue(id);
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 
   }
