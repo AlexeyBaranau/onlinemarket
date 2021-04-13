@@ -11,5 +11,5 @@ public interface OrderService {
 
     Order saveOrder();
 
-    void changeOrderStatus(String code, Integer status);
+    void changeOrderStatus(Long orderId, Integer status);
 }

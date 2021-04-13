@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class Order implements Serializable {
   Customer customer;
 
   @Column(name = "total_price")
-  private Double totalPrice;
+  private BigDecimal totalPrice;
 
   @OneToMany(
           mappedBy = "order",
