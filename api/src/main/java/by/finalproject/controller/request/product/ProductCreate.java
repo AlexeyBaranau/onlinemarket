@@ -2,6 +2,8 @@ package by.finalproject.controller.request.product;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class ProductCreate {
 
@@ -9,7 +11,7 @@ public class ProductCreate {
 
   private String description;
 
-  private Double price;
+  private BigDecimal price;
 
   private Long categoryId;
 

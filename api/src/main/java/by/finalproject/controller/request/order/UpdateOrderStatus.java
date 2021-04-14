@@ -3,9 +3,9 @@ package by.finalproject.controller.request.order;
 import lombok.Data;
 
 @Data
-public class OrderCreate {
+public class UpdateOrderStatus {
 
-  private Long productId;
+    private Long id;
 
-  private Integer amount;
+    private Integer status;
 }
