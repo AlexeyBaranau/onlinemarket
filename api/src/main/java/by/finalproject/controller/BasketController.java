@@ -1,7 +1,7 @@
 package by.finalproject.controller;
 
 import by.finalproject.controller.request.basket.BasketDTO;
-import by.finalproject.controller.request.basket.BasketItem;
+import by.finalproject.controller.request.basket.BasketItemRequest;
 import by.finalproject.converter.basket.BasketMapper;
 import by.finalproject.domain.Basket;
 import by.finalproject.service.BasketService;
@@ -33,22 +33,22 @@ public class BasketController {
 
   @ApiOperation("Add product to basket")
   @PostMapping
-  public ResponseEntity<BasketDTO> addToBasket (@RequestBody BasketItem basketItem){
-  Basket basket = basketService.addToBasket(basketItem.getProductId(), basketItem.getAmount());
+  public ResponseEntity<BasketDTO> addToBasket (@RequestBody BasketItemRequest basketItemRequest){
+  Basket basket = basketService.addToBasket(basketItemRequest.getProductId(), basketItemRequest.getAmount());
   return ResponseEntity.ok(basketMapper.toDTO(basket));
   }
 
   @ApiOperation("Increase item quantity")
   @PostMapping("/increase")
-  public ResponseEntity<BasketDTO> increaseBasketItem (@RequestBody BasketItem basketItem){
-  Basket basket = basketService.increaseBasketItem(basketItem.getProductId(), basketItem.getAmount());
+  public ResponseEntity<BasketDTO> increaseBasketItem (@RequestBody BasketItemRequest basketItemRequest){
+  Basket basket = basketService.increaseBasketItem(basketItemRequest.getProductId(), basketItemRequest.getAmount());
   return ResponseEntity.ok(basketMapper.toDTO(basket));
   }
 
   @ApiOperation("Decrease item quantity")
   @PostMapping("/decrease")
-  public ResponseEntity<BasketDTO> decreaseBasketItem (@RequestBody BasketItem basketItem){
-  Basket basket = basketService.decreaseBasketItem(basketItem.getProductId(), basketItem.getAmount());
+  public ResponseEntity<BasketDTO> decreaseBasketItem (@RequestBody BasketItemRequest basketItemRequest){
+  Basket basket = basketService.decreaseBasketItem(basketItemRequest.getProductId(), basketItemRequest.getAmount());
   return ResponseEntity.ok(basketMapper.toDTO(basket));
   }
 

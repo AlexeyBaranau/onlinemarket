@@ -9,6 +9,8 @@ import java.util.List;
 @Data
 public class OrderDTO {
 
+  private Long id;
+
   private Timestamp created;
 
   private BigDecimal totalPrice;

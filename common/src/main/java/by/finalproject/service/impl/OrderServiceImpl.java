@@ -25,8 +25,8 @@ import static org.springframework.data.domain.PageRequest.of;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-  private final BasketService basketService;
   private final OrderRepository orderRepository;
+  private final BasketService basketService;
   private final CustomerService customerService;
 
   @Override
@@ -38,7 +38,7 @@ public class OrderServiceImpl implements OrderService {
   @Override
   public Page<Order> findAllCustomerOrders(Integer page, Integer pageSize) {
     Customer customer = customerService.getCustomer();
-    return orderRepository.findAllByCustomerOrderByDateDesc(customer, of(page, pageSize));
+    return orderRepository.findAllByCustomerOrderByCreatedDesc(customer, of(page, pageSize));
   }
 
   @Override

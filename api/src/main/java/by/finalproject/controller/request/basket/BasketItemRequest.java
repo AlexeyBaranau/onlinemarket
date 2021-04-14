@@ -3,7 +3,7 @@ package by.finalproject.controller.request.basket;
 import lombok.Data;
 
 @Data
-public class BasketItem {
+public class BasketItemRequest {
 
     private Long productId;
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
@@ -29,6 +30,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(exclude = "customer")
 @Entity
 @Table(name = "m_orders")
 public class Order implements Serializable {
@@ -41,7 +43,7 @@ public class Order implements Serializable {
 
   @ManyToOne
   @JoinColumn(name = "customer_id")
-  Customer customer;
+  private Customer customer;
 
   @Column(name = "total_price")
   private BigDecimal totalPrice;
