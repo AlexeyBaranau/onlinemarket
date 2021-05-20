@@ -18,3 +18,5 @@ public class SpringBootApplicationStarter {
     SpringApplication.run(SpringBootApplicationStarter.class, args);
   }
 }
+
+/*DOCKER*/
