@@ -8,13 +8,12 @@
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
 
     <artifactId>api</artifactId>
 
     <properties>
-
         <jwt.version>0.9.1</jwt.version>
-
         <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
     </properties>
 
@@ -66,5 +65,14 @@
 
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
