@@ -4,7 +4,7 @@ spring:
       maximum-pool-size: 10
     username: postgres
     password: root
-    url: "jdbc:postgresql://localhost:5432/onlinemarketdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+    url: "jdbc:postgresql://localhost:5433/onlinemarketdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
     driver-class-name: org.postgresql.Driver
   liquibase:
     change-log: classpath:changelog/db.changelog-master.xml

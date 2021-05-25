@@ -118,7 +118,7 @@ public class BasketServiceImpl implements BasketService {
                 () ->
                     new EntityNotFoundException(format("Product with id %d not found", productId)));
     basket.getBasketItemList().remove(basketItem);
-    if (basket.getBasketItemList().isEmpty() || basket.getBasketItemList().size() == 0) {
+    if (basket.getBasketItemList().isEmpty()) {
       basket.setTotalPrice(null);
       return basket;
     }
