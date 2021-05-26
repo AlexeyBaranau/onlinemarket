@@ -1,10 +1,7 @@
 package by.finalproject.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,6 +26,7 @@ import java.util.Set;
 @Entity
 @EqualsAndHashCode(exclude = "roles")
 @Table(name = "m_customers")
+@Builder
 public class Customer implements Serializable {
 
   private static final long serialVersionUID = 723779660656994741L;
