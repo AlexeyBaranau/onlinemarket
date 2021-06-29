@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Timestamp;
+
 @RestController
 @RequestMapping("/api/v1/registration")
 @RequiredArgsConstructor
@@ -23,6 +25,9 @@ public class RegistrationController {
   @PostMapping
   public ResponseEntity<Customer> registration(@RequestBody CustomerCreate customerCreate) {
     Customer customer = customerMapper.customerDTOtoCustomer(customerCreate);
+    customer.setCreated(new Timestamp(System.currentTimeMillis()));
+    customer.setChanged(new Timestamp(System.currentTimeMillis()));
+    customer.setIsDeleted(false);
     return new ResponseEntity<>(customerService.create(customer), HttpStatus.CREATED);
   }
 }
